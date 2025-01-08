@@ -22,16 +22,16 @@ jobs:
         run: |
           echo "Running because the previous step has succeeded"
 
-      - name: Step 3 - I am Failing
+      - name: Step 3 - I am making it success
         run: |
-          echo "I am failing"
-          exit 1  # Failure (non-zero exit code)
+          echo "I am not failing"
+          exit 0  # Failure (non-zero exit code)
 
       - name: Step 4 - I Will Never Execute
         run: |
           echo "I will never execute"
 
       - name: Step 5 - Execute on Workflow Failure
-        if: ${{ failure() }}  # Only run this step if the workflow failed
+        if: ${{ success() }}  # Only run this step if the workflow failed
         run: |
           echo "Workflow failed"
